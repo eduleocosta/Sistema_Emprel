@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block titulo_pagina %}Vans - RG Solicitados{% endblock %}
+
+{% block conteudo %}
+    <div class="container-fluid mt-4">
+        <h2>Vans</h2>
+
+        <div class="card mb-4">
+            <div class="card-header bg-white"><strong>Nova Van</strong></div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <label class="form-label">Nome</label>
+                        <input type="text" class="form-control" id="nova_van_nome" placeholder="Nome da van">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Descrição</label>
+                        <input type="text" class="form-control" id="nova_van_desc" placeholder="Descrição">
+                    </div>
+                    <div class="col-md-3 d-flex align-items-end">
+                        <button class="btn btn-success" id="btn_salvar_van">Salvar Van</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-white"><strong>Vans Cadastradas</strong></div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover" id="tabela_vans">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Descrição</th>
+                                <th>Ativa</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody_vans"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts_extras %}
+    <script src="/static/js/vans.js"></script>
+{% endblock %}

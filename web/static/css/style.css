@@ -1,0 +1,61 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.input-group .btn {
+    white-space: nowrap;
+}
+
+.table th {
+    background-color: #f1f3f5;
+    font-size: 0.9rem;
+}
+
+.form-label {
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+}
+
+.form-control, .form-select {
+    font-size: 0.9rem;
+    padding: 0.375rem 0.75rem;
+    height: auto;
+}
+
+.btn {
+    font-size: 0.85rem;
+    padding: 0.375rem 0.75rem;
+    height: 46px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+#ent_protocolo, #ent_cpf, #ent_nome {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.home-actions .btn {
+    height: 46px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+}
+
+.bloco-logo img {
+    max-height: 50px;
+}
+
+#bloco_acao_ativa {
+    background-color: #EFF6FF;
+    color: #172554;
+    border: 1px solid #BFDBFE;
+    border-radius: 0.375rem;
+}
+
+#acao_ativa_texto {
+    color: #1E3A8A;
+}

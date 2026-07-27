@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block titulo_pagina %}Ações - RG Solicitados{% endblock %}
+
+{% block conteudo %}
+    <div class="container-fluid mt-4">
+        <h2>Ações</h2>
+
+        <div class="card mb-4">
+            <div class="card-header bg-white"><strong>Nova Ação</strong></div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <label class="form-label">Nome</label>
+                        <input type="text" class="form-control" id="nova_acao_nome" placeholder="Nome da ação">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Local</label>
+                        <input type="text" class="form-control" id="nova_acao_local" placeholder="Local">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Data</label>
+                        <input type="text" class="form-control" id="nova_acao_data" placeholder="DD/MM/AAAA">
+                    </div>
+                    <div class="col-md-3 d-flex align-items-end">
+                        <button class="btn btn-success" id="btn_salvar_acao">Salvar Ação</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-white"><strong>Ações Cadastradas</strong></div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover" id="tabela_acoes">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Local</th>
+                                <th>Data</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody_acoes"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts_extras %}
+    <script src="/static/js/acoes.js"></script>
+{% endblock %}

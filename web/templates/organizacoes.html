@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block titulo_pagina %}Organizações - RG Solicitados{% endblock %}
+
+{% block conteudo %}
+    <div class="container-fluid mt-4">
+        <h2>Organizações</h2>
+
+        <div class="card mb-4">
+            <div class="card-header bg-white"><strong>Nova Organização</strong></div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Nome</label>
+                        <input type="text" class="form-control" id="nova_org_nome" placeholder="Nome da organização">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Descrição</label>
+                        <input type="text" class="form-control" id="nova_org_desc" placeholder="Descrição">
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end">
+                        <button class="btn btn-success" id="btn_salvar_org">Salvar Organização</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-white"><strong>Organizações Cadastradas</strong></div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover" id="tabela_org">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Descrição</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody_org"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts_extras %}
+    <script src="/static/js/organizacoes.js"></script>
+{% endblock %}

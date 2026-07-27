@@ -1,0 +1,238 @@
+import os
+import re
+import hashlib
+import secrets
+from datetime import datetime
+import unicodedata
+from config import (
+    DB_FILE, DB_USUARIOS, DB_ORGANIZACOES, DEFAULT_DB
+)
+from database.core import load_db, save_db, load_usuarios, save_usuarios
+
+def hash_password(password: str, salt: bytes = None) -> dict:
+    if salt is None:
+        salt = secrets.token_bytes(16)
+    dk = hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), salt, 120_000)
+    return {"salt": salt.hex(), "hash": dk.hex()}
+
+def verify_password(stored: dict, password: str) -> bool:
+    if not stored:
+        return False
+    salt = bytes.fromhex(stored["salt"])
+    attempt = hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), salt, 120_000).hex()
+    return secrets.compare_digest(attempt, stored["hash"])
+
+def migrar_usuarios_novos_campos():
+    usuarios = load_usuarios()
+    alterado = False
+    hoje = datetime.now()
+    for cpf, dados in usuarios.items():
+        if "email" not in dados:
+            dados["email"] = ""
+            alterado = True
+        if "data_nascimento" not in dados:
+            dados["data_nascimento"] = ""
+            alterado = True
+        if "ultima_troca_senha" not in dados:
+            dados["ultima_troca_senha"] = hoje.strftime("%d/%m/%Y")
+            alterado = True
+        if "senha_expirada" not in dados:
+            dados["senha_expirada"] = True
+            alterado = True
+        if "tentativas_recuperacao" not in dados:
+            dados["tentativas_recuperacao"] = 0
+            alterado = True
+        if "bloqueado_ate" not in dados:
+            dados["bloqueado_ate"] = ""
+            alterado = True
+        if "ativo" not in dados:
+            dados["ativo"] = True
+            alterado = True
+        if "tentativas_login" not in dados:
+            dados["tentativas_login"] = 0
+            alterado = True
+    if alterado:
+        save_usuarios(usuarios)
+
+def senha_expirada_60_dias(dados_usuario):
+    try:
+        ultima = datetime.strptime(dados_usuario.get("ultima_troca_senha", ""), "%d/%m/%Y").date()
+        return (datetime.now().date() - ultima).days >= 60
+    except Exception:
+        return True
+
+def migrar_usuarios():
+    from database.core import ensure_db
+    ensure_db()
+    if not load_usuarios():
+        db = load_db()
+        if db.get("usuarios"):
+            save_usuarios(db["usuarios"])
+            del db["usuarios"]
+            save_db(db)
+    migrar_usuarios_novos_campos()
+
+def migrar_servicos_antigos(db):
+    alterado = False
+
+    for r in db.get("cadastros", []):
+        if "servico_id" not in r and "servico" in r:
+            servico = next(
+                (s for s in db.get("servicos", []) if s["nome"] == r["servico"]),
+                None
+            )
+            if servico:
+                r["servico_id"] = servico["id"]
+                alterado = True
+
+            r.pop("servico", None)
+
+    if alterado:
+        save_db(db)
+
+def migrar_cadastros_acoes_orfas(db):
+    acoes_por_id = {
+        str(a.get("id", "")).strip(): a
+        for a in db.get("acoes", [])
+        if str(a.get("id", "")).strip()
+    }
+
+    def servicos_da_acao(acao):
+        servicos = acao.get("servicos") or []
+        if isinstance(servicos, str):
+            return [servicos.strip()]
+        return [str(servico_id).strip() for servico_id in servicos if str(servico_id).strip()]
+
+    def escolher_acao(cadastro):
+        data = str(cadastro.get("data", "")).strip()
+        servico_id = str(cadastro.get("servico_id", "")).strip()
+        if not data:
+            return None
+
+        candidatos = []
+        for acao in db.get("acoes", []):
+            if str(acao.get("data", "")).strip() != data:
+                continue
+            servicos = servicos_da_acao(acao)
+            if servico_id and servico_id not in servicos:
+                continue
+            candidatos.append(acao)
+
+        if len(candidatos) == 1:
+            return candidatos[0]
+
+        candidatos_com_cadastro = []
+        for acao in candidatos:
+            acao_id = str(acao.get("id", "")).strip()
+            if any(
+                str(outro.get("acao_id", "")).strip() == acao_id
+                and str(outro.get("data", "")).strip() == data
+                and (not servico_id or str(outro.get("servico_id", "")).strip() == servico_id)
+                for outro in db.get("cadastros", [])
+            ):
+                candidatos_com_cadastro.append(acao)
+
+        if len(candidatos_com_cadastro) == 1:
+            return candidatos_com_cadastro[0]
+
+        return None
+
+    alterado = False
+
+    for cadastro in db.get("cadastros", []):
+        acao_id = str(cadastro.get("acao_id", "")).strip()
+        if acao_id and acao_id in acoes_por_id:
+            continue
+
+        acao = escolher_acao(cadastro)
+        if not acao:
+            continue
+
+        novo_acao_id = str(acao.get("id", "")).strip()
+        if novo_acao_id and novo_acao_id != acao_id:
+            cadastro["acao_id"] = novo_acao_id
+            alterado = True
+
+        servico_id = str(cadastro.get("servico_id", "")).strip()
+        servicos = servicos_da_acao(acao)
+        if not servico_id and len(servicos) == 1:
+            cadastro["servico_id"] = servicos[0]
+            alterado = True
+
+    if alterado:
+        save_db(db)
+
+def migrar_telefones_antigos(db):
+    if db.get("migracao_tel_v2"):
+        return
+
+    for r in db.get("cadastros", []):
+        telefone_antigo = r.get("telefone", "").strip()
+
+        if telefone_antigo:
+            r["telefone"] = formatar_telefone_novo(telefone_antigo)
+
+    db["migracao_tel_v2"] = True
+    save_db(db)
+
+def hoje_str() -> str:
+    return datetime.now().strftime("%d/%m/%Y")
+
+def formatar_telefone_novo(numero: str) -> str:
+    digitos = re.sub(r"\D", "", numero)
+
+    if len(digitos) == 10:
+        digitos = digitos[:2] + "9" + digitos[2:]
+    elif len(digitos) != 11:
+        return numero
+
+    return f"({digitos[:2]}) {digitos[2]}.{digitos[3:7]}-{digitos[7:]}"
+
+def nome_arquivo_seguro(texto: str) -> str:
+    texto = unicodedata.normalize("NFKD", str(texto or ""))
+    texto = "".join(ch for ch in texto if not unicodedata.combining(ch))
+    texto = re.sub(r'[\/:*?"<>|]+', " ", texto)
+    texto = re.sub(r"\s+", "_", texto).strip("_")
+    return texto or "sem_nome"
+
+def caminho_pdf(subpasta: str, prefixo: str) -> str:
+    from config import APP_DIR
+    pasta_base = os.path.join(APP_DIR, "pdf", subpasta)
+    os.makedirs(pasta_base, exist_ok=True)
+    prefixo = re.sub(r'[\/:*?"<>|\s]+', "", prefixo).strip() or "PDF"
+    data_hora = datetime.now().strftime("%d-%m-%Y_%H-%M-%S")
+    caminho = os.path.join(pasta_base, f"{prefixo}_{data_hora}.pdf")
+    contador = 2
+    while os.path.exists(caminho):
+        caminho = os.path.join(pasta_base, f"{prefixo}_{data_hora}_{contador}.pdf")
+        contador += 1
+    return caminho
+
+def get_nome_servico_por_id(db, servico_id):
+    servico = next((s for s in db.get("servicos", []) if str(s.get("id")) == str(servico_id)), None)
+    return servico.get("nome", "Serviço removido") if servico else "Serviço removido"
+
+def get_nome_acao_por_id(db, acao_id):
+    acao_id = str(acao_id or "").strip()
+    acao = next((a for a in db.get("acoes", []) if str(a.get("id", "")).strip() == acao_id), None)
+    if not acao:
+        return ""
+    return acao.get("local", "")
+
+def get_acao_por_id(db, acao_id):
+    return next((a for a in db.get("acoes", []) if str(a.get("id")) == str(acao_id)), None)
+
+def migrar_organizacoes():
+    db = load_db()
+    if "organizacoes" not in db:
+        db["organizacoes"] = []
+        save_db(db)
+
+    alterado = False
+    for a in db.get("acoes", []):
+        if "organizacoes" not in a and "organizacao" in a:
+            valor = a.pop("organizacao")
+            a["organizacoes"] = [valor] if valor else []
+            alterado = True
+    if alterado:
+        save_db(db)

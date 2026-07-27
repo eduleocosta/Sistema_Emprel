@@ -1,0 +1,249 @@
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import cm
+from datetime import datetime
+from collections import defaultdict
+import os
+from config import APP_DIR
+
+def mascarar_cpf_pdf(cpf: str) -> str:
+    cpf = ''.join(filter(str.isdigit, str(cpf or "")))
+    if len(cpf) != 11:
+        return cpf
+    return f"xxx.xx{cpf[5]}.{cpf[6:9]}-{cpf[9:]}"
+
+def gerar_pdf_entrega(registros, nome_arquivo, db, acao_info="", data_acao=""):
+    c = canvas.Canvas(nome_arquivo, pagesize=A4)
+    largura, altura = A4
+
+    grupos = defaultdict(list)
+
+    for r in registros:
+        acao_id = r.get("acao_id")
+        acao = next((a for a in db.get("acoes", []) if str(a.get("id")) == str(acao_id)), None)
+
+        if acao:
+            chave = (
+                acao.get("data", "Sem data"),
+                acao.get("local", "Sem local")
+            )
+        elif r.get("acao") or r.get("data"):
+            chave = (
+                r.get("data", "Sem data"),
+                r.get("acao", "Sem local")
+            )
+        else:
+            chave = ("Sem data", "Sem local")
+
+        grupos[chave].append(r)
+
+    def desenhar_cabecalho(c, texto_acao):
+        caminho_logo = os.path.join(
+            APP_DIR,
+            "img",
+            "Logo_Recife.png"
+        )
+
+        try:
+            c.drawImage(
+                caminho_logo,
+                40,
+                altura - 95,
+                width=70,
+                height=70,
+                preserveAspectRatio=True,
+                mask='auto'
+            )
+        except:
+            pass
+
+        c.setFont("Helvetica-Bold", 13)
+        c.drawString(130, altura - 50, "PREFEITURA MUNICIPAL DO RECIFE")
+
+        c.setFont("Helvetica", 11)
+        c.drawString(130, altura - 65, "EMPRESA MUNICIPAL DE INFORMATICA - EMPREL")
+
+        titulo = "RELAÇÃO DE IDENTIDADE PARA ENTREGA"
+        c.setFont("Helvetica-Bold", 14)
+        largura_texto = c.stringWidth(titulo, "Helvetica-Bold", 14)
+        c.drawString((largura - largura_texto) / 2, altura - 100, titulo)
+
+        c.line(30, altura - 110, largura - 30, altura - 110)
+
+        c.drawString(30, altura - 130, texto_acao)
+
+        c.line(30, altura - 140, largura - 30, altura - 140)
+
+    def desenhar_tabela_header(y_pos):
+        c.setFont("Helvetica-Bold", 12)
+        c.drawString(30, y_pos, "Protocolo")
+        c.drawString(95, y_pos, "Nome")
+        c.drawString(270, y_pos, "CPF")
+        c.drawString(350, y_pos, "Telefone")
+        c.drawString(440, y_pos, "Assinatura")
+        return y_pos - 15
+
+    for (data_acao, local_acao), lista in grupos.items():
+
+        texto_acao = f"{data_acao} - {local_acao}"
+
+        desenhar_cabecalho(c, texto_acao)
+
+        y = altura - 160
+        y = desenhar_tabela_header(y)
+
+        for r in lista:
+
+            if y < 80:
+                c.showPage()
+                desenhar_cabecalho(c, texto_acao)
+                y = altura - 160
+                y = desenhar_tabela_header(y)
+
+            c.setFont("Helvetica", 10)
+            c.drawString(30, y, str(r.get("protocolo", "")))
+            c.drawString(95, y, str(r.get("nome", "")))
+            c.drawString(270, y, mascarar_cpf_pdf(r.get("cpf", "")))
+            c.drawString(350, y, str(r.get("telefone", "")))
+
+            c.line(440, y, largura - 30, y)
+
+            y -= 20
+
+        if y < 200:
+            c.showPage()
+            desenhar_cabecalho(c, texto_acao)
+            y = altura - 220
+
+        c.setFont("Helvetica", 11)
+
+        c.drawCentredString(
+            largura / 2,
+            y,
+            "Declaro que recebi todas as identidades acima listadas"
+        )
+
+        y -= 25
+
+        box_width = 230
+        box_height = 90
+        gap = 20
+
+        x1 = (largura / 2) - box_width - (gap / 2)
+        x2 = (largura / 2) + (gap / 2)
+
+        y_box = y - box_height
+
+        def desenhar_box(x, y_base):
+            c.rect(x, y_base, box_width, box_height)
+
+            c.setFont("Helvetica", 9)
+
+            c.drawString(x + 10, y_base + box_height - 20, "Nome:")
+            c.line(x + 50, y_base + box_height - 20, x + box_width - 10, y_base + box_height - 20)
+
+            c.drawString(x + 10, y_base + box_height - 40, "CPF:")
+            c.line(x + 40, y_base + box_height - 40, x + box_width - 10, y_base + box_height - 40)
+
+            c.drawString(x + 10, y_base + box_height - 60, "Data:")
+            c.line(x + 50, y_base + box_height - 60, x + box_width - 10, y_base + box_height - 60)
+
+            c.line(x + 20, y_base + 15, x + box_width - 20, y_base + 15)
+            c.drawCentredString(x + box_width / 2, y_base + 2, "Assinatura")
+
+        desenhar_box(x1, y_box)
+        desenhar_box(x2, y_box)
+
+        c.showPage()
+
+    c.save()
+
+def gerar_pdf_relatorio(registros, nome_arquivo, tipo, data_de, data_ate):
+    c = canvas.Canvas(nome_arquivo, pagesize=A4)
+    largura, altura = A4
+    c.setFont("Helvetica-Bold", 14)
+    c.drawCentredString(largura / 2, altura - 50, "RELATÓRIO DE CADASTROS")
+    c.setFont("Helvetica", 10)
+    c.drawString(30, altura - 80, f"Tipo: {tipo}")
+    c.drawString(30, altura - 95, f"Período: {data_de} a {data_ate}")
+    c.setFont("Helvetica-Bold", 11)
+    c.drawString(30, altura - 120, f"Total de registros: {len(registros)}")
+    c.setFont("Helvetica", 9)
+
+    y = altura - 150
+    c.drawString(30, y, "Protocolo")
+    c.drawString(100, y, "Nome")
+    c.drawString(250, y, "CPF")
+    c.drawString(340, y, "Data")
+    c.drawString(400, y, "Entregue")
+    c.line(30, y - 5, largura - 30, y - 5)
+    y -= 20
+
+    for r in registros:
+        if y < 100:
+            c.showPage()
+            y = altura - 50
+        c.drawString(30, y, str(r.get("protocolo", "")))
+        c.drawString(100, y, str(r.get("nome", ""))[:30])
+        c.drawString(250, y, str(r.get("cpf", "")))
+        c.drawString(340, y, str(r.get("data", "")))
+        c.drawString(400, y, "SIM" if r.get("entregue") else "NÃO")
+        y -= 15
+
+    c.save()
+
+def gerar_pdf_relatorio_acao(registros, nome_arquivo, acao, tempo_total, total, entregues, media_str, capacidade, primeira_hora="-", ultima_hora="-"):
+    c = canvas.Canvas(nome_arquivo, pagesize=A4)
+    largura, altura = A4
+    c.setFont("Helvetica-Bold", 14)
+    c.drawCentredString(largura / 2, altura - 50, "RELATÓRIO POR AÇÃO")
+    c.setFont("Helvetica", 10)
+    c.drawString(30, altura - 80, f"Ação: {acao.get('local', '')}")
+    c.drawString(30, altura - 95, f"Data: {acao.get('data', '')}")
+    c.drawString(30, altura - 110, f"Horário Inicial: {primeira_hora}")
+    c.drawString(30, altura - 125, f"Horário Final: {ultima_hora}")
+    c.drawString(30, altura - 140, f"Tempo Total: {tempo_total}")
+    c.drawString(30, altura - 155, f"Total de cadastros: {total}")
+    c.drawString(30, altura - 170, f"Identidades entregues: {entregues}")
+    c.drawString(30, altura - 185, f"Média por registro: {media_str}")
+    c.drawString(30, altura - 200, f"Capacidade estimada (3h): {capacidade} cadastros")
+    c.save()
+
+def gerar_pdf_ranking(ranking, nome_arquivo, acao_por_id):
+    c = canvas.Canvas(nome_arquivo, pagesize=A4)
+    largura, altura = A4
+    c.setFont("Helvetica-Bold", 14)
+    c.drawCentredString(largura / 2, altura - 50, "RANKING AÇÕES POR CADASTROS")
+    c.setFont("Helvetica", 10)
+
+    y = altura - 80
+    c.drawString(30, y, "Local")
+    c.drawString(300, y, "Data")
+    c.drawString(380, y, "Qtd Cadastros")
+    c.line(30, y - 5, largura - 30, y - 5)
+    y -= 20
+
+    for acao_id, qtd in ranking:
+        if y < 100:
+            c.showPage()
+            y = altura - 50
+        acao = acao_por_id.get(acao_id, {})
+        c.drawString(30, y, str(acao.get("local", ""))[:35])
+        c.drawString(300, y, str(acao.get("data", "")))
+        c.drawString(380, y, str(qtd))
+        y -= 15
+
+    c.save()
+
+def caminho_pdf(subpasta: str, prefixo: str) -> str:
+    pasta_base = os.path.join(APP_DIR, "pdf", subpasta)
+    os.makedirs(pasta_base, exist_ok=True)
+    prefixo = ''.join(c for c in prefixo if c not in r'\/:*?"<>|')
+    prefixo = prefixo.strip() or "PDF"
+    data_hora = datetime.now().strftime("%d-%m-%Y_%H-%M-%S")
+    caminho = os.path.join(pasta_base, f"{prefixo}_{data_hora}.pdf")
+    contador = 2
+    while os.path.exists(caminho):
+        caminho = os.path.join(pasta_base, f"{prefixo}_{data_hora}_{contador}.pdf")
+        contador += 1
+    return caminho

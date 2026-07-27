@@ -1,0 +1,20 @@
+[
+    {
+        "tipo": "servico",
+        "data_exclusao": "01/06/2026 22:16:08",
+        "operador": "01340877473",
+        "dados": {
+            "id": "6",
+            "nome": "AÇÃO ALTO DA BEA VISTA"
+        }
+    },
+    {
+        "tipo": "servico",
+        "data_exclusao": "08/06/2026 18:42:14",
+        "operador": "06456202469",
+        "dados": {
+            "id": "8",
+            "nome": "teste"
+        }
+    }
+]

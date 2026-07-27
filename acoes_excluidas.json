@@ -1,0 +1,630 @@
+[
+    {
+        "tipo": "acao",
+        "data_exclusao": "24/05/2026 14:15:08",
+        "operador": "01340877473",
+        "dados": {
+            "id": "102",
+            "data": "24/05/2026",
+            "local": "teste2",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "24/05/2026 17:31:43",
+        "operador": "01340877473",
+        "dados": {
+            "id": "101",
+            "data": "24/05/2026",
+            "local": "teste",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "08/06/2026 18:41:40",
+        "operador": "06456202469",
+        "dados": {
+            "id": "110",
+            "data": "08/06/2026",
+            "local": "teste",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "08/06/2026 22:54:36",
+        "operador": "01340877473",
+        "dados": {
+            "id": "110",
+            "data": "08/06/2026",
+            "local": "ASDFASDF",
+            "endereco": "មហាវិទ្យាល័យ​វិទ្យាសាស្ត្រកសិកម្ម (RUA), Side walk, ភូមិខ្វា, សង្កាត់ដង្កោ, ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120501, ព្រះរាជាណាចក្រ​កម្ពុជា",
+            "latitude": 11.5118487,
+            "longitude": 104.9003821,
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "08/06/2026 23:02:15",
+        "operador": "01340877473",
+        "dados": {
+            "id": "110",
+            "data": "08/06/2026",
+            "local": "TESTE",
+            "endereco": "Avenida Recife, Ibura de Baixo, Ibura, Recife, Pernambuco, Região Nordeste, 50860-000, Brasil",
+            "latitude": -8.1192197,
+            "longitude": -34.9212899,
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "08/06/2026 23:11:56",
+        "operador": "01340877473",
+        "dados": {
+            "id": "110",
+            "data": "08/06/2026",
+            "local": "TESTE",
+            "endereco": "Avenida Recife, Estância, Recife, Pernambuco, Região Nordeste, 50865-030, Brasil",
+            "latitude": -8.0850539,
+            "longitude": -34.9319779,
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "08/06/2026 23:12:56",
+        "operador": "01340877473",
+        "dados": {
+            "id": "110",
+            "data": "08/06/2026",
+            "local": "TESTE",
+            "endereco": "Rua Taguatinga, Vila Carrão, Carrão, São Paulo, Região Sudeste, 03441-000, Brasil",
+            "latitude": -23.5458749,
+            "longitude": -46.5363231,
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "08/06/2026 23:19:07",
+        "operador": "01340877473",
+        "dados": {
+            "id": "110",
+            "data": "08/06/2026",
+            "local": "TESTE",
+            "endereco": "Teste, Onsernone, Circolo d'Onsernone, Distretto di Locarno, Ticino, 6611, Schweiz/Suisse/Svizzera/Svizra",
+            "latitude": 46.2117526,
+            "longitude": 8.626828,
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "08/06/2026 23:27:32",
+        "operador": "01340877473",
+        "dados": {
+            "id": "113",
+            "data": "08/06/2026",
+            "local": "TESTANDO 4",
+            "endereco": "Dois Unidos, Recife, Pernambuco, Região Nordeste, Brasil",
+            "latitude": -7.9974518,
+            "longitude": -34.9108119,
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "08/06/2026 23:27:35",
+        "operador": "01340877473",
+        "dados": {
+            "id": "112",
+            "data": "08/06/2026",
+            "local": "TESTANDO 3",
+            "endereco": "Avenida Recife, Vila Cardeal e Silva, Areias, Recife, Pernambuco, Região Nordeste, 50860-900, Brasil",
+            "latitude": -8.0919048,
+            "longitude": -34.9294043,
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "08/06/2026 23:27:38",
+        "operador": "01340877473",
+        "dados": {
+            "id": "111",
+            "data": "08/06/2026",
+            "local": "TESTANDO",
+            "endereco": "Rua Taguatinga, Vila Carrão, Carrão, São Paulo, Região Sudeste, 03444-000, Brasil",
+            "latitude": -23.5460118,
+            "longitude": -46.537633,
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "08/06/2026 23:27:42",
+        "operador": "01340877473",
+        "dados": {
+            "id": "110",
+            "data": "08/06/2026",
+            "local": "TESTE",
+            "endereco": "Rua Taguatinga, Vila Carrão, Carrão, São Paulo, Região Sudeste, 03444-000, Brasil",
+            "latitude": -23.5460118,
+            "longitude": -46.537633,
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "09/06/2026 01:06:37",
+        "operador": "01340877473",
+        "dados": {
+            "id": "107",
+            "data": "04/06/2026",
+            "local": "COMPAZ ARIANO SUASSUNA",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "09/06/2026 01:06:41",
+        "operador": "01340877473",
+        "dados": {
+            "id": "113",
+            "data": "09/06/2026",
+            "local": "TESTE",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "09/06/2026 01:06:44",
+        "operador": "01340877473",
+        "dados": {
+            "id": "112",
+            "data": "09/06/2026",
+            "local": "TESTE",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "09/06/2026 01:06:47",
+        "operador": "01340877473",
+        "dados": {
+            "id": "111",
+            "data": "09/06/2026",
+            "local": "TESTE",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "09/06/2026 01:06:56",
+        "operador": "01340877473",
+        "dados": {
+            "id": "110",
+            "data": "08/06/2026",
+            "local": "TESTE",
+            "endereco": "Rua Taguatinga, Vila Carrão, Carrão, São Paulo, Região Sudeste, 03441-000, Brasil",
+            "latitude": -23.5458749,
+            "longitude": -46.5363231,
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "09/06/2026 01:06:58",
+        "operador": "01340877473",
+        "dados": {
+            "id": "109",
+            "data": "06/06/2026",
+            "local": "UR-12 IBURA SEGOV",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "09/06/2026 01:07:01",
+        "operador": "01340877473",
+        "dados": {
+            "id": "108",
+            "data": "05/06/2026",
+            "local": "UR-12 IBURA SEGOV",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "09/06/2026 01:07:30",
+        "operador": "01340877473",
+        "dados": {
+            "id": "104",
+            "data": "30/05/2026",
+            "local": "ALTO DA BELA VISTA",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "09/06/2026 01:07:33",
+        "operador": "01340877473",
+        "dados": {
+            "id": "106",
+            "data": "02/06/2026",
+            "local": "COMPAZ ARIANO SUASSUNA",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "09/06/2026 01:07:35",
+        "operador": "01340877473",
+        "dados": {
+            "id": "105",
+            "data": "01/06/2026",
+            "local": "COMPAZ ARIANO SUASSUNA",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "09/06/2026 01:09:19",
+        "operador": "01340877473",
+        "dados": {
+            "id": "102",
+            "data": "27/05/2026",
+            "local": "ESCOLA MUNICIPAL DE ÁGUA FRIA",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "09/06/2026 01:09:27",
+        "operador": "01340877473",
+        "dados": {
+            "id": "103",
+            "data": "28/05/2026",
+            "local": "FACULDADE UNIFBV",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "09/06/2026 01:09:30",
+        "operador": "01340877473",
+        "dados": {
+            "id": "101",
+            "data": "26/05/2026",
+            "local": "ESCOLA MUNICIPAL DE ÁGUA FRIA",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "09/06/2026 01:17:02",
+        "operador": "01340877473",
+        "dados": {
+            "id": "107",
+            "data": "04/06/2026",
+            "local": "COMPAZ ARIANO SUASSUNA",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "09/06/2026 01:17:18",
+        "operador": "01340877473",
+        "dados": {
+            "id": "106",
+            "data": "02/06/2026",
+            "local": "COMPAZ ARIANO SUASSUNA",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "10/06/2026 13:03:12",
+        "operador": "01340877473",
+        "dados": {
+            "id": "108",
+            "data": "05/06/2026",
+            "local": "UR-12 IBURA SEGOV",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "06/07/2026 20:12:24",
+        "operador": "01340877473",
+        "dados": {
+            "id": "132",
+            "data": "06/07/2026",
+            "local": "MINHA CASA",
+            "organizacoes": [
+                "SECRETARIA DE GOVERNO - SEGOV"
+            ],
+            "endereco": "RUA DO SOBE E DESCE E NUNCA APARECE",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "09/07/2026 21:13:19",
+        "operador": "01340877473",
+        "dados": {
+            "id": "134",
+            "data": "09/07/2026",
+            "local": "MUSTARDINHA SEGOV",
+            "organizacoes": [
+                "SECRETARIA DE GOVERNO - SEGOV"
+            ],
+            "endereco": "RUA CARLOS GOMES 1318",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "09/07/2026 21:18:42",
+        "operador": "01340877473",
+        "dados": {
+            "id": "51",
+            "data": "11/03/2026",
+            "local": "VIETNÃ SEGOV",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "09/07/2026 21:24:15",
+        "operador": "01340877473",
+        "dados": {
+            "id": "23",
+            "data": "13/01/2026",
+            "local": "USF+ HÉLIO MENDONÇA",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "09/07/2026 21:26:31",
+        "operador": "01340877473",
+        "dados": {
+            "id": "66",
+            "data": "30/03/2026",
+            "local": "USF+ BERNARD VAN LEE",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "10/07/2026 11:09:10",
+        "operador": "01340877473",
+        "dados": {
+            "id": "134",
+            "data": "09/07/2026",
+            "local": "MUSTARDINHA SEGOV",
+            "organizacoes": [
+                "SECRETARIA DE GOVERNO - SEGOV"
+            ],
+            "endereco": "RUA CARLOS GOMES 1318",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "12/07/2026 17:31:03",
+        "operador": "01340877473",
+        "dados": {
+            "id": "138",
+            "data": "12/07/2026",
+            "local": "TESTE",
+            "organizacoes": [
+                "SECRETARIA DE GOVERNO - SEGOV"
+            ],
+            "endereco": "TESTE",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "13/07/2026 14:22:13",
+        "operador": "01340877473",
+        "dados": {
+            "id": "42",
+            "data": "03/02/2026",
+            "local": "ALTO DA BELA VISTA",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "13/07/2026 15:45:00",
+        "operador": "09364397428",
+        "dados": {
+            "id": "140",
+            "data": "13/07/2026",
+            "local": "ESCOLA CARLÚCIO CASTANHA",
+            "organizacoes": [
+                "SECRETARIA DE GOVERNO - SEGOV"
+            ],
+            "endereco": "ESCOLA CARLÚCIO CASTANHA",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "20/07/2026 18:26:56",
+        "operador": "06456202469",
+        "dados": {
+            "id": "144",
+            "data": "22/07/2026",
+            "local": "TESTE",
+            "organizacoes": [
+                "SECRETARIA DE GOVERNO - SEGOV"
+            ],
+            "endereco": "teste",
+            "servicos": [
+                "1"
+            ],
+            "vans": [
+                "2"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "20/07/2026 18:28:27",
+        "operador": "06456202469",
+        "dados": {
+            "id": "143",
+            "data": "21/07/2026",
+            "local": "NOVA MORADA CENTRO ESPÍRITA MESTRA LEONORA",
+            "organizacoes": [
+                "SECRETARIA DE GOVERNO - SEGOV"
+            ],
+            "endereco": "RUA REMIS CARLA COSTA N 208",
+            "servicos": [
+                "1"
+            ],
+            "vans": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "20/07/2026 18:41:13",
+        "operador": "01340877473",
+        "dados": {
+            "id": "143",
+            "data": "21/07/2026",
+            "local": "NOVA MORADA CENTRO ESPÍRITA MESTRA LEONORA",
+            "organizacoes": [
+                "SECRETARIA DE GOVERNO - SEGOV"
+            ],
+            "endereco": "RUA REMIS CARLA COSTA N 208",
+            "servicos": [
+                "1"
+            ],
+            "vans": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "20/07/2026 18:44:09",
+        "operador": "01340877473",
+        "dados": {
+            "id": "143",
+            "data": "21/07/2026",
+            "local": "NOVA MORADA CENTRO ESPÍRITA MESTRA LEONORA",
+            "organizacoes": [
+                "SECRETARIA DE GOVERNO - SEGOV"
+            ],
+            "endereco": "RUA REMIS CARLA COSTA N 208",
+            "servicos": [
+                "1"
+            ]
+        }
+    },
+    {
+        "tipo": "acao",
+        "data_exclusao": "27/07/2026 17:13:36",
+        "operador": "01340877473",
+        "dados": {
+            "id": "150",
+            "data": "28/07/2026",
+            "local": "TESTE2",
+            "organizacoes": [
+                "teste2"
+            ],
+            "endereco": "asdfasdfasdfasdfasdf",
+            "servicos": [
+                "1"
+            ],
+            "vans": [
+                "1"
+            ]
+        }
+    }
+]

@@ -1,0 +1,191 @@
+import json
+from datetime import datetime
+from config import (
+    DB_FILE, DB_USUARIOS, DB_ORGANIZACOES, HISTORICO_BACKUP,
+    DB_ACOES, DB_SERVICOS,
+    DEFAULT_DB, PASTA_BACKUP_LOCAL, PASTA_BACKUP_NUVEM,
+    APP_DIR, ARQUIVO_ACAO_ATIVA, PASTA_LISTAS
+)
+import os
+
+def ensure_db():
+    if not os.path.exists(DB_FILE):
+        with open(DB_FILE, "w", encoding="utf-8") as f:
+            json.dump(DEFAULT_DB, f, indent=4, ensure_ascii=False)
+
+def load_db():
+    ensure_db()
+    with open(DB_FILE, "r", encoding="utf-8") as f:
+        db = json.load(f)
+    db["acoes"] = load_acoes()
+    db["servicos"] = load_servicos()
+    db["organizacoes"] = load_organizacoes()
+    return db
+
+def save_db(db):
+    core = {k: v for k, v in db.items() if k not in ("acoes", "servicos", "organizacoes")}
+    with open(DB_FILE, "w", encoding="utf-8") as f:
+        json.dump(core, f, indent=4, ensure_ascii=False)
+    if "acoes" in db:
+        save_acoes(db["acoes"])
+    if "servicos" in db:
+        save_servicos(db["servicos"])
+    if "organizacoes" in db:
+        save_organizacoes(db["organizacoes"])
+
+def ensure_usuarios():
+    if not os.path.exists(DB_USUARIOS):
+        with open(DB_USUARIOS, "w", encoding="utf-8") as f:
+            json.dump({}, f, indent=4, ensure_ascii=False)
+
+def load_usuarios():
+    ensure_usuarios()
+    with open(DB_USUARIOS, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+def save_usuarios(usuarios):
+    with open(DB_USUARIOS, "w", encoding="utf-8") as f:
+        json.dump(usuarios, f, indent=4, ensure_ascii=False)
+
+def ensure_acoes():
+    if not os.path.exists(DB_ACOES):
+        with open(DB_ACOES, "w", encoding="utf-8") as f:
+            json.dump([], f, indent=4, ensure_ascii=False)
+
+def load_acoes():
+    ensure_acoes()
+    with open(DB_ACOES, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+def save_acoes(acoes):
+    with open(DB_ACOES, "w", encoding="utf-8") as f:
+        json.dump(acoes, f, indent=4, ensure_ascii=False)
+
+def ensure_servicos():
+    if not os.path.exists(DB_SERVICOS):
+        with open(DB_SERVICOS, "w", encoding="utf-8") as f:
+            json.dump([], f, indent=4, ensure_ascii=False)
+
+def load_servicos():
+    ensure_servicos()
+    with open(DB_SERVICOS, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+def save_servicos(servicos):
+    with open(DB_SERVICOS, "w", encoding="utf-8") as f:
+        json.dump(servicos, f, indent=4, ensure_ascii=False)
+
+def ensure_organizacoes():
+    if not os.path.exists(DB_ORGANIZACOES):
+        with open(DB_ORGANIZACOES, "w", encoding="utf-8") as f:
+            json.dump([], f, indent=4, ensure_ascii=False)
+
+def load_organizacoes():
+    ensure_organizacoes()
+    with open(DB_ORGANIZACOES, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+def save_organizacoes(organizacoes):
+    with open(DB_ORGANIZACOES, "w", encoding="utf-8") as f:
+        json.dump(organizacoes, f, indent=4, ensure_ascii=False)
+
+def carregar_historico_backup():
+    if not os.path.exists(HISTORICO_BACKUP):
+        return {
+            "ultimo_backup": None,
+            "ultimo_restore": None
+        }
+    try:
+        with open(HISTORICO_BACKUP, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except:
+        return {
+            "ultimo_backup": None,
+            "ultimo_restore": None
+        }
+
+def salvar_historico_backup(historico):
+    with open(HISTORICO_BACKUP, "w", encoding="utf-8") as f:
+        json.dump(historico, f, indent=4, ensure_ascii=False)
+
+def valores_lista_tree(tree):
+    dados = []
+    for item in tree.get_children():
+        valores = tree.item(item)["values"]
+        if valores:
+            dados.append(list(valores))
+    return dados
+
+ARQ_LISTA_ENTREGA = os.path.join(PASTA_LISTAS, "lista_final_atual.json")
+
+def salvar_lista_tree(tree, nome_arquivo=None, metadados=None):
+    os.makedirs(PASTA_LISTAS, exist_ok=True)
+    dados = valores_lista_tree(tree)
+    caminho = ARQ_LISTA_ENTREGA if not nome_arquivo else os.path.join(PASTA_LISTAS, nome_arquivo)
+    payload = {
+        "metadados": metadados or {},
+        "itens": dados
+    }
+    with open(caminho, "w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+    return os.path.basename(caminho)
+
+def carregar_lista_tree(tree, nome_arquivo=None):
+    caminho = ARQ_LISTA_ENTREGA if not nome_arquivo else os.path.join(PASTA_LISTAS, nome_arquivo)
+    if not os.path.exists(caminho):
+        return
+    try:
+        with open(caminho, "r", encoding="utf-8") as f:
+            dados = json.load(f)
+        if isinstance(dados, dict):
+            dados = dados.get("itens", [])
+        for linha in dados:
+            tree.insert("", "end", values=linha[:4])
+    except:
+        pass
+
+def salvar_excluido(nome_arquivo, tipo, item, usuario_logado):
+    historico = []
+    if os.path.exists(nome_arquivo):
+        with open(nome_arquivo, "r", encoding="utf-8") as f:
+            try:
+                historico = json.load(f)
+            except:
+                historico = []
+    historico.append({
+        "tipo": tipo,
+        "data_exclusao": datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+        "operador": usuario_logado,
+        "dados": item
+    })
+    with open(nome_arquivo, "w", encoding="utf-8") as f:
+        json.dump(historico, f, indent=4, ensure_ascii=False)
+
+def registrar_entrega_json_separado(lista_dados, usuario_logado):
+    from config import DB_ENTREGAS
+    if os.path.exists(DB_ENTREGAS):
+        with open(DB_ENTREGAS, "r", encoding="utf-8") as f:
+            try:
+                entregas = json.load(f)
+            except:
+                entregas = []
+    else:
+        entregas = []
+    timestamp = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    for item in lista_dados:
+        data_entrega = item.get("data_entrega") or timestamp
+        registro = {
+            "data_entrega_registro": data_entrega,
+            "operador": usuario_logado,
+            "protocolo": item.get("protocolo", ""),
+            "nome": item.get("nome", ""),
+            "cpf": item.get("cpf", ""),
+            "telefone": item.get("telefone", ""),
+            "data_acao": item.get("data", ""),
+            "acao": item.get("acao", ""),
+            "acao_id": item.get("acao_id", ""),
+            "servico_id": item.get("servico_id", "")
+        }
+        entregas.append(registro)
+    with open(DB_ENTREGAS, "w", encoding="utf-8") as f:
+        json.dump(entregas, f, indent=4, ensure_ascii=False)

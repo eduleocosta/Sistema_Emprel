@@ -1,0 +1,184 @@
+{
+    "01340877473": {
+        "salt": "cf0508421b6025001b30097935410d17",
+        "hash": "fb430da7a1312d387617b1a153bb85f5020629cc602497357f380b6079fe2622",
+        "perfil": "admin",
+        "nome": "EDUARDO COSTA BEZERRA",
+        "email": "eduleocosta@gmail.com",
+        "data_nascimento": "18/10/1980",
+        "ultima_troca_senha": "24/06/2026",
+        "senha_expirada": false,
+        "tentativas_recuperacao": 0,
+        "bloqueado_ate": "",
+        "ativo": true,
+        "tentativas_login": 0,
+        "vans_permitidas": [],
+        "van_ativa": ""
+    },
+    "14175218483": {
+        "salt": "487d4856d0dbe126dd4446f15362ae53",
+        "hash": "a117df70ec68429648484a3ad8c77c4035d295920b1bd1163e355ea5c6f242d3",
+        "perfil": "usuario",
+        "nome": "LUIZA ANGELO",
+        "email": "luizaangelo82@gmail.com",
+        "data_nascimento": "09/02/2004",
+        "ultima_troca_senha": "25/06/2026",
+        "senha_expirada": false,
+        "tentativas_recuperacao": 0,
+        "bloqueado_ate": "",
+        "ativo": true,
+        "tentativas_login": 0,
+        "vans_permitidas": [],
+        "van_ativa": ""
+    },
+    "06456202469": {
+        "salt": "261cdb42c080640f15c4b9439661762b",
+        "hash": "5d9df0bbb9a26765b74716d3e38ee5a4d6bd2b833e92c2c9d8d7786da4bf3d0f",
+        "perfil": "user",
+        "nome": "TESTE TESTE",
+        "email": "elianamf2006@hotmail.com",
+        "data_nascimento": "08/08/1987",
+        "ultima_troca_senha": "24/06/2026",
+        "senha_expirada": false,
+        "tentativas_recuperacao": 0,
+        "bloqueado_ate": "24/06/2026 18:46:15",
+        "ativo": true,
+        "tentativas_login": 3,
+        "vans_permitidas": [
+            "1"
+        ],
+        "van_ativa": "1"
+    },
+    "09798581431": {
+        "salt": "fb075f192157db0633363eb94dbb62c1",
+        "hash": "8d868e181d5d716c7802c47407b0293c120bdd3d979511015cc01395b2825eed",
+        "perfil": "usuario",
+        "nome": "CAROL",
+        "email": "",
+        "data_nascimento": "",
+        "ultima_troca_senha": "24/06/2025",
+        "senha_expirada": true,
+        "tentativas_recuperacao": 0,
+        "bloqueado_ate": "",
+        "ativo": true,
+        "tentativas_login": 0,
+        "vans_permitidas": [],
+        "van_ativa": ""
+    },
+    "09364397428": {
+        "salt": "09728c54fc025c008d11e0437f20956f",
+        "hash": "66ed69c333463104229ac57310452983f1d9560025d0d1eb0d62542f08448025",
+        "perfil": "usuario",
+        "nome": "PRISCILA SANTANA",
+        "email": "prisantanaramos@gmial.com",
+        "data_nascimento": "26/11/1991",
+        "ultima_troca_senha": "09/07/2026",
+        "senha_expirada": false,
+        "tentativas_recuperacao": 0,
+        "bloqueado_ate": "",
+        "ativo": true,
+        "tentativas_login": 8,
+        "vans_permitidas": [],
+        "van_ativa": ""
+    },
+    "66581923400": {
+        "salt": "5962c6018aa7c1e5a71c0e2c42131284",
+        "hash": "9fedadc4466e33d6ddb9af15326e619c183756becbf6999035bb10871027fcba",
+        "perfil": "usuario",
+        "nome": "ADILNEIDE ANDRADE",
+        "email": "",
+        "data_nascimento": "",
+        "ultima_troca_senha": "24/06/2025",
+        "senha_expirada": true,
+        "tentativas_recuperacao": 0,
+        "bloqueado_ate": "",
+        "ativo": true,
+        "tentativas_login": 0,
+        "vans_permitidas": [],
+        "van_ativa": ""
+    },
+    "70225189470": {
+        "salt": "ef827e97438545c99f62601531d3a7a3",
+        "hash": "194bebf567a3f56d12e8671ff6971045eb49c18a3f2e1abfb5b63c7b27fd3dfd",
+        "perfil": "usuario",
+        "nome": "RAISSA LIMA",
+        "email": "raisssalima84@gmail.com",
+        "data_nascimento": "09/03/2002",
+        "ultima_troca_senha": "30/06/2026",
+        "senha_expirada": false,
+        "tentativas_recuperacao": 0,
+        "bloqueado_ate": "",
+        "ativo": true,
+        "tentativas_login": 0,
+        "vans_permitidas": [],
+        "van_ativa": ""
+    },
+    "12113858410": {
+        "salt": "ea507d3b5bc048bae661a4fb065dc2ef",
+        "hash": "30905c50cc169dd56527acd57e0c13c2de021b3713ef01c5e21fdc61348c9ade",
+        "perfil": "usuario",
+        "nome": "EZEQUIAS",
+        "email": "",
+        "data_nascimento": "",
+        "ultima_troca_senha": "24/06/2025",
+        "senha_expirada": true,
+        "tentativas_recuperacao": 0,
+        "bloqueado_ate": "",
+        "ativo": true,
+        "tentativas_login": 0,
+        "vans_permitidas": [],
+        "van_ativa": ""
+    },
+    "00000000000": {
+        "nome": "Usuário Teste",
+        "cpf": "00000000000",
+        "perfil": "usuario",
+        "ativo": true,
+        "senha_expirada": false,
+        "ultima_troca_senha": "20/07/2026",
+        "tentativas_login": 0,
+        "tentativas_recuperacao": 0,
+        "bloqueado_ate": "",
+        "vans_permitidas": [],
+        "van_ativa": "",
+        "salt": "76920dbd5d52825af98c5257406bb89e",
+        "hash": "87fca986835a00c2b649f9cfc7dc15933beef572251d758272fe0cbdac048e52",
+        "email": "",
+        "data_nascimento": "",
+        "perguntas_modo_teste": [
+            {
+                "id": 1,
+                "pergunta": "Data de nascimento (DD/MM/AAAA):",
+                "resposta": "01/01/1990"
+            },
+            {
+                "id": 2,
+                "pergunta": "Nome da mãe:",
+                "resposta": "Maria"
+            },
+            {
+                "id": 3,
+                "pergunta": "Nome do pai:",
+                "resposta": "João"
+            },
+            {
+                "id": 4,
+                "pergunta": "Número da identidade (RG):",
+                "resposta": "123456789"
+            },
+            {
+                "id": 5,
+                "pergunta": "Data que iniciou na empresa (DD/MM/AAAA):",
+                "resposta": "01/01/2020"
+            }
+        ],
+        "perguntas_usadas": [
+            {
+                "id": 3,
+                "pergunta": "Nome do pai:",
+                "resposta": "Durval Cipriano Bezerra"
+            }
+        ],
+        "pergunta_atual_id": 3
+    }
+}

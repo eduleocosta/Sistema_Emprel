@@ -1,0 +1,51 @@
+import time
+import subprocess
+import sys
+import os
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
+
+ARQUIVO_PRINCIPAL = "sistemaatualizado.py"
+
+
+class ReloadHandler(FileSystemEventHandler):
+
+    # Inicializa
+    def __init__(self):
+        self.processo = self.iniciar_programa()
+
+    # Iniciar programa
+    def iniciar_programa(self):
+        print("Iniciando sistema...")
+        return subprocess.Popen([sys.executable, ARQUIVO_PRINCIPAL])
+
+    # Ao modified
+    def on_modified(self, event):
+        if event.src_path.endswith(".py"):
+            print("Alteração detectada! Reiniciando sistema...")
+
+            try:
+                self.processo.terminate()
+                time.sleep(1)
+            except:
+                pass
+
+            self.processo = self.iniciar_programa()
+
+
+if __name__ == "__main__":
+
+    event_handler = ReloadHandler()
+
+    observer = Observer()
+    observer.schedule(event_handler, path=".", recursive=False)
+
+    observer.start()
+
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        observer.stop()
+
+    observer.join()

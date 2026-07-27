@@ -1,0 +1,757 @@
+[
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "24/05/2026 12:40:53",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "0909",
+            "nome": "teste",
+            "cpf": "013.408.774-73",
+            "telefone": "",
+            "data": "19/05/2026",
+            "entregue": false,
+            "acao_id": "96",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "24/05/2026 13:21:10",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "0000000000",
+            "nome": "ASDFASDFASDFASDF",
+            "cpf": "013.408.774-73",
+            "telefone": "(00) 0.0000-0000",
+            "data": "17/05/2026",
+            "entregue": false,
+            "data_entrega": "",
+            "operador_entrega": "",
+            "acao_id": "96",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "24/05/2026 13:21:41",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "0000000002",
+            "nome": "TWERTWERTWERTWERTWERT",
+            "cpf": "013.408.774-73",
+            "telefone": "(00) 0.0000-0000",
+            "data": "17/05/2026",
+            "entregue": false,
+            "data_entrega": "",
+            "operador_entrega": "",
+            "acao_id": "96",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "24/05/2026 13:21:57",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "0000000001",
+            "nome": "FGHJFGHJFGHJFGHJFGHJF",
+            "cpf": "013.408.774-73",
+            "telefone": "(00) 0.0000-0000",
+            "data": "17/05/2026",
+            "entregue": false,
+            "data_entrega": "",
+            "operador_entrega": "",
+            "acao_id": "96",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "24/05/2026 13:36:24",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "100",
+            "nome": "asdfasdfasfdafsd",
+            "cpf": "013.408.774-73",
+            "telefone": "(81) 9.8847-4903 / (81) 9.8847-4903",
+            "data": "24/05/2026",
+            "entregue": false,
+            "acao_id": "101",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "24/05/2026 13:36:28",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "101",
+            "nome": "asdfasdfasfdafsd",
+            "cpf": "013.408.774-73",
+            "telefone": "(81) 9.8847-4903 / (81) 9.8847-4903",
+            "data": "24/05/2026",
+            "entregue": false,
+            "acao_id": "101",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "24/05/2026 13:36:43",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "105",
+            "nome": "asdfasdfasfdafsd",
+            "cpf": "013.408.774-73",
+            "telefone": "(81) 9.8847-4903 / (81) 9.8847-4903",
+            "data": "24/05/2026",
+            "entregue": false,
+            "acao_id": "101",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "24/05/2026 15:24:39",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "100",
+            "nome": "asdfasfdafsd",
+            "cpf": "013.408.774-73",
+            "telefone": "",
+            "data": "24/05/2026",
+            "entregue": false,
+            "acao_id": "99",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "24/05/2026 15:24:44",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "102",
+            "nome": "asdfasdfasfdafsd",
+            "cpf": "013.408.774-73",
+            "telefone": "(81) 9.8847-4903 / (81) 9.8847-4903",
+            "data": "24/05/2026",
+            "entregue": false,
+            "acao_id": "101",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "24/05/2026 15:40:21",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "123456789",
+            "nome": "TESTE TESTE",
+            "cpf": "013.408.774-73",
+            "telefone": "(81) 9.9888-8888",
+            "data": "01/05/2026",
+            "entregue": false,
+            "acao_id": "84",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "24/05/2026 16:48:24",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "104",
+            "nome": "asdfasdfasfdafsd",
+            "cpf": "013.408.774-73",
+            "telefone": "(81) 9.8847-4903 / (81) 9.8847-4903",
+            "data": "24/05/2026",
+            "entregue": false,
+            "acao_id": "101",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "24/05/2026 16:53:13",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "103",
+            "nome": "asdfasdfasfdafsd",
+            "cpf": "013.408.774-73",
+            "telefone": "(81) 9.8847-4903 / (81) 9.8847-4903",
+            "data": "24/05/2026",
+            "entregue": false,
+            "acao_id": "101",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "24/05/2026 17:31:20",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "555454",
+            "nome": "asdfasdfasdfasdfasdfs",
+            "cpf": "013.408.774-73",
+            "telefone": "",
+            "data": "24/05/2026",
+            "entregue": false,
+            "acao_id": "101",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "27/05/2026 17:40:13",
+        "operador": "09364397428",
+        "dados": {
+            "protocolo": "708.801.764-40",
+            "nome": "Emmanuel Melo Martins",
+            "cpf": "708.801.764-40",
+            "telefone": "",
+            "data": "27/05/2026",
+            "entregue": false,
+            "acao_id": "102",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "28/05/2026 14:56:34",
+        "operador": "09364397428",
+        "dados": {
+            "protocolo": "633865699",
+            "nome": "Ayanna Carla da Conceição",
+            "cpf": "132.306.004-95",
+            "telefone": "",
+            "data": "28/05/2026",
+            "entregue": false,
+            "acao_id": "103",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "30/05/2026 10:09:41",
+        "operador": "09364397428",
+        "dados": {
+            "protocolo": "634586203",
+            "nome": "Laís Penelopes da Silva Santana",
+            "cpf": "165.109.904-90",
+            "telefone": "",
+            "data": "30/05/2026",
+            "entregue": false,
+            "acao_id": "104",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "01/06/2026 15:24:30",
+        "operador": "09798581431",
+        "dados": {
+            "protocolo": "635473208",
+            "nome": "Keven Wilames Santana Vieira",
+            "cpf": "185.597.244-19",
+            "telefone": "",
+            "data": "01/06/2026",
+            "entregue": false,
+            "acao_id": "105",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "02/06/2026 14:31:22",
+        "operador": "09364397428",
+        "dados": {
+            "protocolo": "635885867",
+            "nome": "Willames Geraldo dos Santos Pereira",
+            "cpf": "093.066.734-42",
+            "telefone": "",
+            "data": "02/06/2026",
+            "entregue": false,
+            "acao_id": "106",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "08/06/2026 17:56:03",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "123456789",
+            "nome": "TESTE TESTE",
+            "cpf": "013.408.774-73",
+            "telefone": "(81) 9.9888-8888",
+            "data": "01/05/2026",
+            "entregue": false,
+            "acao_id": "84",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "08/06/2026 17:56:15",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "0909",
+            "nome": "teste",
+            "cpf": "013.408.774-73",
+            "telefone": "",
+            "data": "19/05/2026",
+            "entregue": false,
+            "acao_id": "96",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "08/06/2026 17:58:24",
+        "operador": "06456202469",
+        "dados": {
+            "protocolo": "0000000000",
+            "nome": "ASDFASDFASDFASDF",
+            "cpf": "013.408.774-73",
+            "telefone": "(00) 0.0000-0000",
+            "data": "17/05/2026",
+            "entregue": false,
+            "data_entrega": "",
+            "operador_entrega": "",
+            "acao_id": "96",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "10/06/2026 11:10:06",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "600000000",
+            "nome": "eduardo costa bezerra",
+            "cpf": "013.408.774-73",
+            "telefone": "(81) 9.8847-4903",
+            "data": "10/06/2026",
+            "entregue": false,
+            "acao_id": "111",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "13/06/2026 14:53:48",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "0909",
+            "nome": "teste",
+            "cpf": "013.408.774-73",
+            "telefone": "",
+            "data": "19/05/2026",
+            "entregue": false,
+            "acao_id": "96",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "13/06/2026 14:54:03",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "0000000002",
+            "nome": "TWERTWERTWERTWERTWERT",
+            "cpf": "013.408.774-73",
+            "telefone": "(00) 0.0000-0000",
+            "data": "17/05/2026",
+            "entregue": false,
+            "data_entrega": "",
+            "operador_entrega": "",
+            "acao_id": "96",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "13/06/2026 14:54:16",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "0000000001",
+            "nome": "FGHJFGHJFGHJFGHJFGHJF",
+            "cpf": "013.408.774-73",
+            "telefone": "(00) 0.0000-0000",
+            "data": "17/05/2026",
+            "entregue": false,
+            "data_entrega": "",
+            "operador_entrega": "",
+            "acao_id": "96",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "13/06/2026 14:54:28",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "0000000000",
+            "nome": "ASDFASDFASDFASDF",
+            "cpf": "013.408.774-73",
+            "telefone": "(00) 0.0000-0000",
+            "data": "17/05/2026",
+            "entregue": false,
+            "data_entrega": "",
+            "operador_entrega": "",
+            "acao_id": "96",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "13/06/2026 14:54:39",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "123456789",
+            "nome": "TESTE TESTE",
+            "cpf": "013.408.774-73",
+            "telefone": "(81) 9.9888-8888",
+            "data": "01/05/2026",
+            "entregue": false,
+            "acao_id": "84",
+            "servico_id": "1"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "06/07/2026 19:09:02",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "33322554",
+            "nome": "EDUARDO COSTA BEZERRA",
+            "cpf": "013.408.774-73",
+            "telefone": "(81) 9.8847-4903",
+            "data": "06/07/2026",
+            "entregue": false,
+            "acao_id": "132",
+            "servico_id": "1",
+            "hora": "19:00"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "06/07/2026 19:09:59",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "332266565",
+            "nome": "SELVA MARIA DIREITA",
+            "cpf": "066.858.814-45",
+            "telefone": "(81) 9.8847-4903",
+            "data": "06/07/2026",
+            "entregue": false,
+            "acao_id": "132",
+            "servico_id": "1",
+            "hora": "19:01"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "06/07/2026 19:10:03",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "33332666",
+            "nome": "EDUARDO COSTA BEZERRA",
+            "cpf": "013.408.774-73",
+            "telefone": "(81) 9.8847-4903",
+            "data": "06/07/2026",
+            "entregue": false,
+            "acao_id": "132",
+            "servico_id": "1",
+            "hora": "18:44"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "06/07/2026 19:34:07",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "222211111",
+            "nome": "Otavio Henrique da Silva Amaraji",
+            "cpf": "065.259.314-36",
+            "telefone": "(81) 9.9525-4388",
+            "data": "06/07/2026",
+            "entregue": false,
+            "acao_id": "132",
+            "servico_id": "1",
+            "hora": "19:25"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "06/07/2026 19:35:01",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "14411111",
+            "nome": "TESTE",
+            "cpf": "013.408.774-73",
+            "telefone": "(81) 9.9887-7841",
+            "data": "06/07/2026",
+            "entregue": false,
+            "acao_id": "132",
+            "servico_id": "1",
+            "hora": "19:34"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "06/07/2026 19:35:10",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "111112222",
+            "nome": "Uelda Angelo da Silva",
+            "cpf": "002.165.584-76",
+            "telefone": "(81) 9.9887-7841",
+            "data": "06/07/2026",
+            "entregue": false,
+            "acao_id": "132",
+            "servico_id": "1",
+            "hora": "19:23"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "06/07/2026 19:35:16",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "11111111",
+            "nome": "Antonio Amorim da Silva",
+            "cpf": "180.626.444-72",
+            "telefone": "(81) 9.8603-3383",
+            "data": "06/07/2026",
+            "entregue": false,
+            "acao_id": "132",
+            "servico_id": "1",
+            "hora": "19:23"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "06/07/2026 20:11:37",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "665588",
+            "nome": "Polliany Maia de Araújo Silva",
+            "cpf": "710.222.934-86",
+            "telefone": "(81) 9.8676-4110",
+            "data": "06/07/2026",
+            "entregue": false,
+            "acao_id": "132",
+            "servico_id": "1",
+            "hora": "19:58"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "06/07/2026 20:11:43",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "55455",
+            "nome": "Pedro Henrique Soares da Silva",
+            "cpf": "716.352.444-71",
+            "telefone": "(81) 9.9683-5421",
+            "data": "06/07/2026",
+            "entregue": false,
+            "acao_id": "132",
+            "servico_id": "1",
+            "hora": "19:58"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "06/07/2026 20:11:47",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "3333333",
+            "nome": "Marise Mendes de Andrade",
+            "cpf": "406.990.134-53",
+            "telefone": "(81) 9.8674-0621",
+            "data": "06/07/2026",
+            "entregue": false,
+            "acao_id": "132",
+            "servico_id": "1",
+            "hora": "19:56"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "06/07/2026 20:11:51",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "0000001",
+            "nome": "Leidjane Bezerra da Silva",
+            "cpf": "032.503.614-45",
+            "telefone": "(81) 9.8409-6723",
+            "data": "06/07/2026",
+            "entregue": false,
+            "acao_id": "132",
+            "servico_id": "1",
+            "hora": "19:51"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "06/07/2026 20:11:54",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "1234567",
+            "nome": "Julhia Gabriela Gomes da Silva",
+            "cpf": "164.206.654-00",
+            "telefone": "(81) 9.8598-7428",
+            "data": "06/07/2026",
+            "entregue": false,
+            "acao_id": "132",
+            "servico_id": "1",
+            "hora": "19:50"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "07/07/2026 10:16:30",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "649825977",
+            "nome": "Cleonice Rodrigues dos Santos",
+            "cpf": "004.245.378-00",
+            "telefone": "",
+            "data": "07/07/2026",
+            "entregue": false,
+            "acao_id": "132",
+            "servico_id": "1",
+            "hora": "09:39"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "07/07/2026 15:01:32",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "6499115127",
+            "nome": "Ilka Elvira de Oliveira",
+            "cpf": "878.859.484-04",
+            "telefone": "(81) 9998-2789",
+            "data": "07/07/2026",
+            "entregue": false,
+            "acao_id": "132",
+            "servico_id": "1",
+            "hora": "14:22"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "10/07/2026 11:41:49",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "11111",
+            "nome": "eduardo",
+            "cpf": "013.408.774-73",
+            "telefone": "",
+            "data": "10/07/2026",
+            "entregue": false,
+            "acao_id": "135",
+            "servico_id": "1",
+            "hora": "11:39"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "10/07/2026 11:44:43",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "11111111",
+            "nome": "eduardo costa bezerra",
+            "cpf": "013.408.774-73",
+            "telefone": "(81) 9999-9999",
+            "data": "10/07/2026",
+            "entregue": false,
+            "acao_id": "135",
+            "servico_id": "1",
+            "hora": "11:44"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "12/07/2026 17:28:14",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "1111111111",
+            "nome": "EDUADO COSTA BEZERRA",
+            "cpf": "013.408.774-73",
+            "telefone": "",
+            "data": "11/07/2026",
+            "entregue": false,
+            "acao_id": "137",
+            "servico_id": "1",
+            "hora": "17:27"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "12/07/2026 17:28:22",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "65554455",
+            "nome": "ELIANA MARIA FERREIRA",
+            "cpf": "064.562.024-69",
+            "telefone": "",
+            "data": "11/07/2026",
+            "entregue": false,
+            "acao_id": "137",
+            "servico_id": "1",
+            "hora": "17:28"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "12/07/2026 17:30:42",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "4445555454",
+            "nome": "ELIANA MARIA FERREIRA",
+            "cpf": "064.562.024-69",
+            "telefone": "",
+            "data": "12/07/2026",
+            "entregue": false,
+            "acao_id": "138",
+            "servico_id": "1",
+            "hora": "17:30"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "12/07/2026 17:30:48",
+        "operador": "01340877473",
+        "dados": {
+            "protocolo": "11232132132132",
+            "nome": "EDUARDO COSTA BEZERRA",
+            "cpf": "013.408.774-73",
+            "telefone": "",
+            "data": "12/07/2026",
+            "entregue": false,
+            "acao_id": "138",
+            "servico_id": "1",
+            "hora": "17:29"
+        }
+    },
+    {
+        "tipo": "cadastro",
+        "data_exclusao": "14/07/2026 11:10:54",
+        "operador": "14175218483",
+        "dados": {
+            "protocolo": "652808425",
+            "nome": "Thallyson Henrique da Silva Santos",
+            "cpf": "163.270.534-67",
+            "telefone": "",
+            "data": "14/07/2026",
+            "entregue": false,
+            "acao_id": "140",
+            "servico_id": "1",
+            "hora": "09:55"
+        }
+    }
+]

@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1",
+        "nome": "Van 301",
+        "descricao": "",
+        "ativa": true
+    },
+    {
+        "id": "2",
+        "nome": "Van 302",
+        "descricao": "",
+        "ativa": true
+    },
+    {
+        "nome": "Van 303",
+        "descricao": "",
+        "ativa": true,
+        "id": "3"
+    }
+]

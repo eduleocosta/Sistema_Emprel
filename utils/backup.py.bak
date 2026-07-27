@@ -1,0 +1,185 @@
+import os
+import shutil
+import zipfile
+from datetime import datetime
+from config import (
+    PASTA_BACKUP_LOCAL, PASTA_BACKUP_NUVEM, APP_DIR,
+    HISTORICO_BACKUP
+)
+import json
+
+def garantir_pasta_backup():
+    os.makedirs(PASTA_BACKUP_LOCAL, exist_ok=True)
+    os.makedirs(PASTA_BACKUP_NUVEM, exist_ok=True)
+
+def carregar_historico_backup():
+    if not os.path.exists(HISTORICO_BACKUP):
+        return {
+            "ultimo_backup": None,
+            "ultimo_restore": None
+        }
+    try:
+        with open(HISTORICO_BACKUP, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except:
+        return {
+            "ultimo_backup": None,
+            "ultimo_restore": None
+        }
+
+def salvar_historico_backup(historico):
+    with open(HISTORICO_BACKUP, "w", encoding="utf-8") as f:
+        json.dump(historico, f, indent=4, ensure_ascii=False)
+
+def _pasta_backup_deve_pular(raiz_abs, pasta_backup_nuvem, pasta_backup_local):
+    return (
+        raiz_abs == pasta_backup_nuvem
+        or raiz_abs.startswith(pasta_backup_nuvem + os.sep)
+        or raiz_abs == pasta_backup_local
+        or raiz_abs.startswith(pasta_backup_local + os.sep)
+    )
+
+def arquivos_backup():
+    pasta_backup_nuvem = os.path.normcase(os.path.normpath(os.path.abspath(PASTA_BACKUP_NUVEM)))
+    pasta_backup_local = os.path.normcase(os.path.normpath(os.path.abspath(PASTA_BACKUP_LOCAL)))
+
+    arquivos = []
+
+    for raiz, _, nomes in os.walk(APP_DIR):
+        raiz_abs = os.path.normcase(os.path.normpath(os.path.abspath(raiz)))
+
+        if _pasta_backup_deve_pular(raiz_abs, pasta_backup_nuvem, pasta_backup_local):
+            nomes[:] = []
+            continue
+
+        for nome in nomes:
+            caminho = os.path.join(raiz, nome)
+            arcname = os.path.relpath(caminho, APP_DIR)
+            arquivos.append((caminho, arcname))
+
+    return arquivos
+
+def arquivos_backup_por_tipo(tipo):
+    pasta_backup_nuvem = os.path.normcase(os.path.normpath(os.path.abspath(PASTA_BACKUP_NUVEM)))
+    pasta_backup_local = os.path.normcase(os.path.normpath(os.path.abspath(PASTA_BACKUP_LOCAL)))
+
+    from config import PASTA_DOC, PASTA_IMG
+
+    if tipo == "sistema":
+        return arquivos_backup()
+
+    arquivos = []
+
+    if tipo == "db":
+        pastas = [APP_DIR]
+        filtro = lambda nome: nome.lower().endswith(".json")
+        pasta_base = APP_DIR
+    elif tipo == "doc_img":
+        pastas = [PASTA_DOC, PASTA_IMG]
+        filtro = lambda nome: True
+        pasta_base = APP_DIR
+    else:
+        raise ValueError(f"Tipo de backup inválido: {tipo}")
+
+    for pasta in pastas:
+        if not os.path.exists(pasta):
+            continue
+
+        for raiz, _, nomes in os.walk(pasta):
+            raiz_abs = os.path.normcase(os.path.normpath(os.path.abspath(raiz)))
+
+            if _pasta_backup_deve_pular(raiz_abs, pasta_backup_nuvem, pasta_backup_local):
+                continue
+
+            for nome in nomes:
+                if not filtro(nome) or nome.lower().endswith(".py"):
+                    continue
+
+                caminho = os.path.join(raiz, nome)
+                arcname = os.path.relpath(caminho, pasta_base)
+                arquivos.append((caminho, arcname))
+
+    return arquivos
+
+def criar_backup_zip(tipo="sistema"):
+    garantir_pasta_backup()
+
+    data_hora = datetime.now().strftime("%d-%m-%Y_%H-%M-%S")
+    prefixos = {
+        "db": "db",
+        "doc_img": "doc_img",
+        "sistema": "sistema"
+    }
+    prefixo = prefixos.get(tipo, tipo)
+    nome_zip = f"backup_{prefixo}_{data_hora}.zip"
+
+    caminho_zip_local = os.path.join(
+        PASTA_BACKUP_LOCAL,
+        nome_zip
+    )
+
+    caminho_zip_nuvem = os.path.join(
+        PASTA_BACKUP_NUVEM,
+        nome_zip
+    )
+
+    arquivos = arquivos_backup_por_tipo(tipo)
+
+    if not arquivos:
+        raise FileNotFoundError("Nenhum arquivo encontrado para backup.")
+
+    with zipfile.ZipFile(
+        caminho_zip_local,
+        "w",
+        zipfile.ZIP_DEFLATED
+    ) as zipf:
+
+        for caminho, arcname in arquivos:
+            try:
+                if os.path.exists(caminho):
+                    zipf.write(caminho, arcname)
+            except PermissionError:
+                continue
+
+    if os.path.exists(PASTA_BACKUP_NUVEM):
+        shutil.copy2(
+            caminho_zip_local,
+            caminho_zip_nuvem
+        )
+
+    return caminho_zip_local
+
+def verificar_backup_diario():
+
+    garantir_pasta_backup()
+
+    hoje = datetime.now().strftime("%d-%m-%Y")
+
+    for nome in os.listdir(PASTA_BACKUP_LOCAL):
+
+        if nome.startswith(f"backup_{hoje}") or nome.startswith(f"backup_sistema_{hoje}"):
+            return
+
+    criar_backup_zip()
+
+def restaurar_backup_zip(caminho_zip):
+
+    with zipfile.ZipFile(caminho_zip, "r") as zipf:
+        zipf.extractall(APP_DIR)
+
+def registrar_backup_realizado(tipo, caminho):
+    historico = carregar_historico_backup()
+    historico["ultimo_backup"] = {
+        "tipo": tipo,
+        "data": datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+        "caminho": caminho
+    }
+    salvar_historico_backup(historico)
+
+def registrar_restore_realizado(caminho):
+    historico = carregar_historico_backup()
+    historico["ultimo_restore"] = {
+        "data": datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+        "caminho": caminho
+    }
+    salvar_historico_backup(historico)

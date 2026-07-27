@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block titulo_pagina %}Relatórios - RG Solicitados{% endblock %}
+
+{% block conteudo %}
+    <div class="container-fluid mt-4">
+        <h2>Relatórios</h2>
+
+        <div class="card mb-4">
+            <div class="card-header bg-white"><strong>Estatísticas Gerais</strong></div>
+            <div class="card-body">
+                <div class="row" id="estatisticas">
+                    <div class="col-md-4">
+                        <div class="card text-bg-primary mb-3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Total de Cadastros</h5>
+                                <p class="display-6" id="stat_total">-</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-bg-success mb-3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Total de Ações</h5>
+                                <p class="display-6" id="stat_acoes">-</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-bg-warning mb-3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Total de Vans</h5>
+                                <p class="display-6" id="stat_vans">-</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header bg-white"><strong>Cadastros por Ação</strong></div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped" id="tabela_acoes">
+                        <thead>
+                            <tr>
+                                <th>Ação</th>
+                                <th>Total de Cadastros</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody_acoes"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header bg-white"><strong>Cadastros por Período</strong></div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <label class="form-label">De (DD/MM/AAAA)</label>
+                        <input type="text" class="form-control" id="rel_de" placeholder="DD/MM/AAAA">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Até (DD/MM/AAAA)</label>
+                        <input type="text" class="form-control" id="rel_ate" placeholder="DD/MM/AAAA">
+                    </div>
+                    <div class="col-md-3 d-flex align-items-end">
+                        <button class="btn btn-primary" id="btn_rel_periodo">Filtrar</button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped" id="tabela_periodo">
+                        <thead>
+                            <tr>
+                                <th>Protocolo</th>
+                                <th>Nome</th>
+                                <th>CPF</th>
+                                <th>Telefone</th>
+                                <th>Data</th>
+                                <th>Ação</th>
+                                <th>Serviço</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody_periodo"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts_extras %}
+    <script src="/static/js/relatorios.js"></script>
+{% endblock %}
