@@ -196,6 +196,12 @@ def save_usuarios(usuarios):
     ensure_schema()
     conn = _conn()
     for cpf, dados in usuarios.items():
+        van_permitidas = dados.get("vans_permitidas", "")
+        if isinstance(van_permitidas, list):
+            van_permitidas = json.dumps(van_permitidas, ensure_ascii=False)
+        van_ativa = dados.get("van_ativa", "")
+        if isinstance(van_ativa, list):
+            van_ativa = json.dumps(van_ativa, ensure_ascii=False)
         conn.execute("""
             INSERT INTO usuarios (cpf, nome, perfil, email, data_nascimento, salt, hash, ativo, senha_expirada, ultima_troca_senha, tentativas_recuperacao, bloqueado_ate, tentativas_login, vans_permitidas, van_ativa)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -219,8 +225,8 @@ def save_usuarios(usuarios):
             dados.get("tentativas_recuperacao", 0),
             dados.get("bloqueado_ate", ""),
             dados.get("tentativas_login", 0),
-            dados.get("vans_permitidas", ""),
-            dados.get("van_ativa", ""),
+            van_permitidas,
+            van_ativa,
         ))
     conn.commit()
     conn.close()
@@ -252,9 +258,9 @@ def save_cadastros(cadastros):
     conn.execute("DELETE FROM cadastros")
     for item in cadastros:
         conn.execute("""
-            INSERT INTO cadastros (id, protocolo, nome, cpf, telefone, data, acao, servico_id, entregue, data_entrega, operador_entrega, acao_id, van_id, van_nome, hora)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """, (
+    INSERT OR REPLACE INTO acoes (id, data, local, finalizada, endereco, latitude, longitude)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
+    """ (
             str(item.get("id")),
             item.get("protocolo", ""),
             item.get("nome", ""),
@@ -312,9 +318,9 @@ def save_acoes(acoes):
     conn.execute("DELETE FROM acoes_vans")
     for item in acoes:
         conn.execute("""
-            INSERT INTO acoes (id, data, local, finalizada, endereco, latitude, longitude)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
-        """, (
+    INSERT OR REPLACE INTO acoes (id, data, local, finalizada, endereco, latitude, longitude)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
+""", (
             str(item.get("id")),
             item.get("data", ""),
             item.get("local", ""),
@@ -324,11 +330,11 @@ def save_acoes(acoes):
             item.get("longitude", ""),
         ))
         for sid in item.get("servicos", []) or []:
-            conn.execute("INSERT OR IGNORE INTO acoes_servicos (acao_id, servico_id) VALUES (?, ?)", (str(item.get("id")), str(sid)))
+            conn.execute("INSERT OR REPLACE INTO acoes_servicos (acao_id, servico_id) VALUES (?, ?)", (str(item.get("id")), str(sid)))
         for oname in item.get("organizacoes", []) or []:
-            conn.execute("INSERT OR IGNORE INTO acoes_organizacoes (acao_id, organizacao_nome) VALUES (?, ?)", (str(item.get("id")), oname))
+            conn.execute("INSERT OR REPLACE INTO acoes_organizacoes (acao_id, organizacao_nome) VALUES (?, ?)", (str(item.get("id")), oname))
         for vid in item.get("vans", []) or []:
-            conn.execute("INSERT OR IGNORE INTO acoes_vans (acao_id, van_id) VALUES (?, ?)", (str(item.get("id")), str(vid)))
+            conn.execute("INSERT OR REPLACE INTO acoes_vans (acao_id, van_id) VALUES (?, ?)", (str(item.get("id")), str(vid)))
     conn.commit()
     conn.close()
 
