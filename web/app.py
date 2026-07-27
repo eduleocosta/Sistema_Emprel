@@ -5,16 +5,16 @@ import hashlib
 import secrets
 import re
 
-APP_DIR = os.path.dirname(os.path.abspath(__file__))
-PARENT_DIR = os.path.dirname(APP_DIR)
-sys.path.insert(0, PARENT_DIR)
-
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.middleware.sessions import SessionMiddleware
 from starlette.middleware.base import BaseHTTPMiddleware
+
+APP_DIR = os.path.dirname(os.path.abspath(__file__))
+PARENT_DIR = os.path.dirname(APP_DIR)
+sys.path.insert(0, PARENT_DIR)
 
 app = FastAPI(title="RG Solicitados")
 
