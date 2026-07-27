@@ -87,7 +87,7 @@ def migrate():
 
     # modo_teste
     modo_teste_path = os.path.join(APP_DIR, "modo_teste.json")
-    salvar_modo_teste(_read_json(modo_teste_path, {
+    save_modo_teste(_read_json(modo_teste_path, {
         "ativo": False, "expira_em": "", "prorrogacoes": 0,
         "max_prorrogacoes": 5, "duracao_minutos": 10, "admin_ativou": ""
     }))
